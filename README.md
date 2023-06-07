@@ -1,22 +1,38 @@
-# SLT-LAT 
-Code accompanying the paper     
-Locality-Aware Transformer for Video-Based Sign Language Translation             
-Accepted by the Journal of IEEE Signal Processing Letters.          
+# Frozen Pretrained Transformers for Neural Sign Language Translation
+
+This is the implementation for the paper [Frozen Pretrained Transformers for Neural Sign Language Translation](https://users.ugent.be/~mcdcoste/assets/SLT_DeCoster2021Frozen.pdf) presented at [AT4SSL 2021](https://sites.google.com/tilburguniversity.edu/at4svl2021/home).
+
+This code is based on the implementation of [Sign Language Transformers: Sign Language Transformers: Joint End-to-end Sign Language Recognition and Translation](https://www.cihancamgoz.com/pub/camgoz2020cvpr.pdf), available [here](https://github.com/neccam/slt).
+
+ 
 ## Requirements
-Pytorch, Shift
-## Datasets
-The PHOENIX14T dataset can be downloaded from [here](https://github.com/neccam/slt).              
-The CSL dataset can be downloaded from [here](https://ustc-slr.github.io/datasets/2015_csl/).
-## Code
-The code is based on [fpt4slt](https://github.com/m-decoster/fpt4slt) and [Shift Operation](https://github.com/kchengiva/Shift-GCN).
+* Download the feature files using the `data/download.sh` script.
+
+* [Optional] Create a conda or python virtual environment.
+
+* Install required packages using the `requirements.txt` file.
+
+    `pip install -r requirements.txt`
+
+## Usage
+
+Choose the configuration file that you want to reproduce and update the `data.data_path` and `training.model_dir` configuration entries
+to the path where your data resides (default: `data/PHOENIX2014T`) and the path where you want the experiment logs and checkpoints to be saved.
+
+  `python -m signjoey train configs/$CONFIG.yaml` 
+
+For the mBART-50 model, you will first need to tokenize the corpus using the mBART-50 tokenizer. You can use the `tokenization/tokenize_mbart50.py` script for this.
+
 ## Citation
-If you use any part of this code in your research, please cite our paper:      
-@article{guo2023locality,                   
-  title={Locality-Aware Transformer for Video-Based Sign Language Translation},                  
-  author={Guo, Zihui and Hou, Yonghong and Hou, Chunping and Yin, Wenjie},                    
-  journal={IEEE Signal Processing Letters},                 
-  volume={30},                
-  pages={364--368},             
-  year={2023},                
-  publisher={IEEE}                      
+
+If you use this code in one of your projects, please cite
+
+```
+@InProceedings{De_Coster_2021_AT4SSL,
+    author    = {De Coster, Mathieu and D'Oosterlinck, Karel and Pizurica, Marija and Rabaey, Paloma and Verlinden, Severine and Van Herreweghe, Mieke and Dambre, Joni},
+    title     = {Frozen Pretrained Transformers for Neural Sign Language Translation},
+    booktitle = {1st International Workshop on Automated Translation for Signed and Spoken Languages},
+    month     = {August},
+    year      = {2021},
 }
+```
